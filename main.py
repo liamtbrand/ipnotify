@@ -5,6 +5,8 @@ import smtplib
 from socket import timeout
 from urllib.error import HTTPError
 from urllib.error import URLError
+import json
+
 
 def main():
 	print("[Info]: IP address updater is starting...")
@@ -35,16 +37,15 @@ def main():
 		time.sleep(600)
 
 def send_update(ip):
-	fromaddr = 'xythernz@gmail.com'
-	admin_addr  = 'liamtahi@gmail.com'
+	fromaddr = 'user@gmail.com'
+	admin_addr  = 'user@gmail.com'
 	master_msg = "The master-server\'s IP address has changed to " + ip
 
-	minecraft_port = 28772
-	msg = "\nThe minecraft server\'s address has changed to " + ip + ":" + str(minecraft_port) + "\n"
+	msg = "\nThe server\'s address has changed to " + ip + "\n"
 
-	username = 'xythernz'
-	password = 'yRP-sHd-tPu-5W7'
-	
+	username = 'username'
+	password = 'password'
+
 	try:
 		server = smtplib.SMTP('smtp.gmail.com', 587)
 
@@ -68,7 +69,7 @@ def send_update(ip):
 		f = open('last_ip', 'w')
 		f.write(ip)
 		f.close()
-		
+
 		print("[Info]: Mail sent.")
 
 	except (Exception) as error:
