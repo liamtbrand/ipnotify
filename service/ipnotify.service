@@ -1,0 +1,16 @@
+# Service for starting ipnotify
+
+[Unit]
+Description=Notify mailing list of IP change via Email
+After=network.target
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=5
+User=ipnotify
+WorkingDirectory=/opt/ipnotify/
+ExecStart=/usr/bin/env python3 /opt/ipnotify/service.py
+
+[Install]
+WantedBy=multi-user.target
