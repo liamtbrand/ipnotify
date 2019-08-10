@@ -6,9 +6,10 @@ def read():
 	'''
 	with open(smtp_config_file,'r') as f:
 		config = {}
-		for line in smtp_config_file:
-			key, value = line.split()
-			config[key] = value
+		for line in f:
+			if line != "":
+				key, value = line.split(" ",1)
+				config[key] = value
 		return config
 
 def write(config):

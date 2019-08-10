@@ -1,3 +1,5 @@
+from urllib.request import urlopen
+
 ip_address_file = '/var/opt/ipnotify/ip_address'
 
 def read():
