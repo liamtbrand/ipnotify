@@ -15,7 +15,7 @@ sleep_time_in_seconds = 600
 def main():
 	print("[Info]: IP Notify is starting...")
 
-	var last_ip_file = '/var/opt/ipnotify/last_ip'
+	last_ip_file = '/var/opt/ipnotify/last_ip'
 
 	old_ip = ip_address.read()
 	current_ip = old_ip

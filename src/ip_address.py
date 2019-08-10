@@ -12,10 +12,11 @@ def write(ip_address):
 	:param ip_address: The ip address to write.
 	'''
 	with open(ip_address_file,'w') as f:
+		f.write(ip_address)
 
 fetch_url = 'http://ip.42.pl/raw-master-server-ip'
 
 def fetch():
 	''' Fetches the current ip address from the web.
 	'''
-    return str(urlopen(fetch_url).read())[2:-1]
+	return str(urlopen(fetch_url).read())[2:-1]
