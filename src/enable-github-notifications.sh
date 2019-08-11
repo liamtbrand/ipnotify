@@ -22,10 +22,10 @@ echo "For example: git@github.com:liamtbrand/ip-history.git"
 read -p ": " repourlvar
 
 # Clear any old repository.
-sudo -u ipnotify rm -rf ip-history/
+sudo -u ipnotify rm -rf /opt/ipnotify/ip-history/
 
 # Clone the repository locally.
-sudo -u ipnotify git clone $repourlvar ip-history/
+sudo -u ipnotify git clone $repourlvar /opt/ipnotify/ip-history/
 
 # Enable github notifications
 sudo -u ipnotify echo 'github on' >> /etc/opt/ipnotify/notifications
