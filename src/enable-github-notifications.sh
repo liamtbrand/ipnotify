@@ -13,6 +13,16 @@ echo "Paste the following public key into github ssh keys."
 echo "This will allow ipnotify to push to a given repository on github."
 sudo cat /opt/ipnotify/.ssh/id_rsa.pub
 
+# Add id_rsa to github authentication...
+sudo touch /opt/ipnotify/.ssh/config
+sudo chown ipnotify /opt/ipnotify/.ssh/config
+sudo chgrp ipnotify /opt/ipnotify/.ssh/config
+sudo chmod 600 /opt/ipnotify/.ssh/config
+sudo -u ipnotify echo 'Host github.com' > /opt/ipnotify/.ssh/config
+sudo -u ipnotify echo '  User git' >> /opt/ipnotify/.ssh/config
+sudo -u ipnotify echo '  Hostname github.com' >> /opt/ipnotify/.ssh/config
+sudo -u ipnotify echo '  IdentityFile ~/.ssh/id_rsa' >> /opt/ipnotify/.ssh/config
+
 echo "Please copy and add the above key to github before continuing."
 echo "This is needed to continue setup."
 echo ""
