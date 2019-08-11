@@ -35,5 +35,12 @@ sudo cp service/ipnotify.service /etc/systemd/system/ipnotify.service
 # Reload the system services
 sudo systemctl daemon-reload
 
+# Enable the service
+sudo systemctl enable ipnotify.service
+
 # Start the service
 sudo systemctl start ipnotify.service
+
+# Notify user to enable updates.
+echo "Currently no notifications are sent out."
+echo "Run 'sudo /opt/ipnotify/enable-github-notifications.sh' to enable notifications via github."
