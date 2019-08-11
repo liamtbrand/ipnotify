@@ -15,3 +15,12 @@ This program simply notifies the list of recipients of the change in ip of the m
 - Edit the SMTP details: `vim /etc/opt/ipnotify/smtp.conf`
 
 The changes are effective immediately as the service reads them for each access.
+
+NOTE: Now the mailing list is disabled. Instead we use the ip-history git repository.
+TODO: Write so that system sets ip address in ip-history repository and commits this by itself.
+Currently the script to do this is in liamtbrand/ip-history repository.
+
+# TODO:
+
+Install needs to not override the configuration files.
+This means that install will do an update of the ipnotify app.
