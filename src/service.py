@@ -29,8 +29,9 @@ def main():
 				print("[Info]: The IP Address changed from \'"+ str(old_ip) +"\' to \'"+ str(current_ip) +"\'.")
 				print("[Info]: Sending out mail to mailing list...")
 				old_ip = current_ip
-				send_update(current_ip)
+				#send_update(current_ip)
 				ip_address.write(current_ip)
+				subprocess.call(["./update-ip.sh"], shell=True, cwd="/home/ipnotify/ip-history/")
 		except (HTTPError, URLError) as error:
 			print('[Warning]: Data not retrieved because ',error,' - URL: ', url)
 		except timeout:
