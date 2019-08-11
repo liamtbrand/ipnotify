@@ -5,21 +5,21 @@
 # You'll need to add keys to .ssh/ as well.
 
 # Change into the ip-history directory
-mkdir ip-history # create if doesnt exist
-cd ip-history
+sudo -u ipnotify mkdir /opt/ipnotify/ip-history/ # create if doesnt exist (it should)
+sudo -u ipnotify cd /opt/ipnotify/ip-history/
 
 # Set our credentials as the ipnotify bot.
-git config user.email "ipnotify@localhost"
-git config user.name "ipnotify"
+sudo -u ipnotify git config user.email "ipnotify@localhost"
+sudo -u ipnotify git config user.name "ipnotify"
 
 # Make sure we fetch any changes first so we don't encounter issues.
-git pull
+sudo -u ipnotify git pull
 
 # Copy the ip_address file so that we can update it in the repository.
 # We want to store it as plaintext so the browser will display it too.
-cp /var/opt/ipnotify/ip_address ip_address.txt
+sudo -u ipnotify cp /var/opt/ipnotify/ip_address /opt/ipnotify/ip-history/ip_address.txt
 
 # Add the file and commit it.
-git add ip_address.txt
-git commit -m "Update ip address"
-git push
+sudo -u ipnotify git add ip_address.txt
+sudo -u ipnotify git commit -m "Update ip address"
+sudo -u ipnotify git push
