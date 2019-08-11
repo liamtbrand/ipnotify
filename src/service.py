@@ -49,7 +49,7 @@ def send_update(ip):
 	msg = "\nThe server\'s address has changed to " + ip + "\n"
 
 	try:
-		server = smtplib.SMTP(addr, port)
+		server = smtplib.SMTP(addr, int(port))
 
 		server.ehlo()
 		server.starttls()
