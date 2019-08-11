@@ -1,9 +1,14 @@
 # Install script for installing the service.
 # This software depends on python3.
 
+# Create home directory
+sudo mkdir /opt/ipnotify/
+
 # Add a user and group for the ipnotify user
 echo "[IPNotify]: Creating user and group."
 sudo adduser --system --home /opt/ipnotify/ --group ipnotify
+sudo chown ipnotify /opt/ipnotify/
+sudo chgrp ipnotify /opt/ipnotify/
 
 # Copy the ipnotify app into /opt/ipnotify
 echo "[IPNotify]: Copying files to /opt/ipnotify."
