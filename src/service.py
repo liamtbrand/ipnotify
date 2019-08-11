@@ -9,6 +9,7 @@ import json
 import mailinglist
 import ip_address
 import smtp_config
+import notifications
 
 sleep_time_in_seconds = 600
 
@@ -27,11 +28,18 @@ def main():
 			current_ip = ip_address.fetch()
 			if(old_ip != current_ip):
 				print("[Info]: The IP Address changed from \'"+ str(old_ip) +"\' to \'"+ str(current_ip) +"\'.")
-				print("[Info]: Sending out mail to mailing list...")
 				old_ip = current_ip
-				#send_update(current_ip)
+
+				notify_by = notifications.read()
+
+				if notify_by["email"] == "on":
+					send_update(current_ip)
+
 				ip_address.write(current_ip)
-				subprocess.call(["./update-ip.sh"], shell=True, cwd="/home/ipnotify/ip-history/")
+
+				if notify_by["github"] == "on":
+					subprocess.call(["../update-ip.sh"], shell=True, cwd="/opt/ipnotify/ip-history/")
+
 		except (HTTPError, URLError) as error:
 			print('[Warning]: Data not retrieved because ',error,' - URL: ', url)
 		except timeout:
@@ -40,6 +48,7 @@ def main():
 		time.sleep(sleep_time_in_seconds)
 
 def send_update(ip):
+	print("[Info]: Sending out mail to mailing list...")
 
 	config = smtp_config.read()
 	addr, port = config['smtp-server'].split(":")
