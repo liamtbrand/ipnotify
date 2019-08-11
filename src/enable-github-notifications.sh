@@ -18,10 +18,10 @@ sudo touch /opt/ipnotify/.ssh/config
 sudo chown ipnotify /opt/ipnotify/.ssh/config
 sudo chgrp ipnotify /opt/ipnotify/.ssh/config
 sudo chmod 600 /opt/ipnotify/.ssh/config
-sudo -u ipnotify echo 'Host github.com' > /opt/ipnotify/.ssh/config
-sudo -u ipnotify echo '  User git' >> /opt/ipnotify/.ssh/config
-sudo -u ipnotify echo '  Hostname github.com' >> /opt/ipnotify/.ssh/config
-sudo -u ipnotify echo '  IdentityFile ~/.ssh/id_rsa' >> /opt/ipnotify/.ssh/config
+sudo echo 'Host github.com' > /opt/ipnotify/.ssh/config
+sudo echo '  User git' >> /opt/ipnotify/.ssh/config
+sudo echo '  Hostname github.com' >> /opt/ipnotify/.ssh/config
+sudo echo '  IdentityFile /opt/ipnotify/.ssh/id_rsa' >> /opt/ipnotify/.ssh/config
 
 echo "Please copy and add the above key to github before continuing."
 echo "This is needed to continue setup."
